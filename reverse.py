@@ -31,12 +31,11 @@ while 1:
 		print("size of buffer is %d" %(size))
 		testnum=len(message)
 		print("size of message is %d" %(testnum))
-		while size > len(message):
-			print("i am here")
+		while size > len(message):#while the size of the message is bigger than the message chunks add them to final message
 			result = conn.recv(1024)
 			result=result.decode()
 			message+=result
-		message=message.replace("\\r\\n","")
+		message=message.replace("\\r\\n","") #strip off the backslash and enters
 		print (message)
 	else:
 		conn.send(b"exit()")
